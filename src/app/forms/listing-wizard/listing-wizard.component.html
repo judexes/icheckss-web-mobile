@@ -1,0 +1,64 @@
+<div id="page-1" *ngIf="page==1">
+    
+    <div class="modal-title">
+        <h1>Add a Listing</h1>
+    </div>
+
+    <h3 class="modal-subtitle">Which property would you like to list?</h3>
+
+
+    <div>
+        <div>
+            <a (click)="page=3">A new property</a>
+        </div>
+    
+        <div style="margin: 1rem 0 0.5rem 0;">
+            <a (click)="page=2; showsSpaceList=true">An existing property<span class="mdi mdi-arrow-down-right"></span></a>
+        </div>
+
+    </div>
+
+</div>
+
+<div id="page-2" *ngIf="page==2">
+
+    <div class="modal-title">
+        <h1>Add a Listing</h1>
+    </div>
+
+    <h3 class="modal-subtitle">Which property would you like to list?</h3>
+
+    <div>
+        <div *ngIf="showsSpaceList">
+            <div *ngIf="!isLoading" >
+                <ul class="tree scroll smaller">
+                    <app-tree-node *ngFor="let space of spaces; let i = index" [space]="spaces[i]" (selectedSpaceId)="onSpaceIdEmitted($event)"></app-tree-node>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top: 3rem;">
+        <a id="back-button" (click)="stepBack()"><em>Back</em></a>
+    </div>
+
+</div>
+
+<div id="page-3" *ngIf="page==3">
+    
+    <div class="modal-title">
+        <h1>Add a Listing</h1>
+    </div>
+
+    <app-space-form [mode]="'add'" (recordId)="onSpaceIdEmitted($event)"></app-space-form>
+
+</div>
+
+<div id="page-4" *ngIf="page==4">
+    <div class="modal-title">
+        <h1>Add a Listing</h1>
+    </div>
+
+    <app-listing-form [mode]="'add'" [spaceId]="spaceId" (recordId)="onListingIdEmitted($event)"></app-listing-form>
+
+</div>

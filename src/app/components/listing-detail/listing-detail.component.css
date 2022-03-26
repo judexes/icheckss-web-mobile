@@ -1,0 +1,55 @@
+.card-container {
+    padding: 1rem;
+}
+
+.card {
+    margin: 0.5rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05);
+    border: none;
+}
+
+.smaller {
+    font-size: smaller;
+}
+
+td.lab {
+    width: 110px;
+    vertical-align: top;
+    color: black;
+}
+
+.nav-tabs .nav-link {
+    padding: 10px 12px 16px 12px;
+}
+
+.carousel-caption {
+    right: 0%;
+    bottom: 0%;
+    left: 0%;
+    background: #0000007a;
+}  
+
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+    color: #3c3c3c;
+    border-color: #4f4f4f9e;
+}
+
+thead {
+    background: none;
+    border: none;
+}
+
+.cover-img {
+    height: 200px;
+    width: 600px;
+    object-fit: cover;
+}
+
+.activity-table td {
+    vertical-align: top;
+
+}
+
+.super {
+    color: #999;
+}

@@ -1,0 +1,60 @@
+<div class="grid-x card-container wrapper" *ngIf="isLoading">
+    <div class="large-12 medium-12 center-children">
+        <span class="mdi mdi-spin mdi-loading mdi-36px"></span>
+    </div>
+</div>
+
+<div class="grid-x card-container wrapper" *ngIf="action && !isLoading">
+    <div class="large-12 medium-12">
+        
+        <div id="content-container" class="smaller">
+
+
+                <table class="unstriped ">
+                    <tbody class="no-border">
+                        
+                        <tr class="head">
+                            <td colspan="2">
+                                <h2>Memo</h2>
+                            </td>
+                        </tr>
+                        
+                        <tr *ngIf="action.user">
+                            <td class="lab">From</td>
+                            <td>{{ action.user }}</td>
+                        </tr>
+
+                        <tr *ngIf="action.created">
+                            <td class="lab">Date</td>
+                            <td>{{ action.created  | date:'d MMM yyyy' }}</td>
+                        </tr>
+
+                        <tr *ngIf="action.subject">
+                            <td class="lab">Subject</td>
+                            <td>{{ action.subject }}</td>
+                        </tr>
+                        
+                        <tr *ngIf="action.details">
+                            <td class="lab  ">Details</td>
+                            <td>{{ action.details }}</td>
+                        </tr>
+
+                        <tr *ngIf="action.remark">
+                            <td class="lab">Remark</td>
+                            <td>{{ action.remark }}</td>
+                        </tr>
+
+                        <tr *ngIf="action.verified">
+                            <td class="lab">Verified</td>
+                            <td>{{ action.verified }}</td>
+                        </tr>
+                        <tr *ngIf="action.verifier">
+                            <td class="lab">Verifier</td>
+                            <td>{{ action.verifier }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+        </div>
+    </div>
+</div>

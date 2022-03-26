@@ -1,0 +1,102 @@
+<!-- Navbar -->
+<nav class="navbar navbar-light bg-light py-3">
+	<!-- Container wrapper -->
+	<div class="container-fluid">
+		<!-- Navbar brand -->
+		<a class="navbar-brand" href="">
+			<img src="../../../assets/img/inspectify-wordmark-black.png" alt="" class="img-responsive"
+				style="height: 12px;">
+		</a>
+
+		<!-- Toggle button -->
+		<button class="navbar-toggler" type="button" (click)="basicNavbar.toggle()" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<i class="fas fa-bars"></i>
+		</button>
+
+		<!-- Collapsible wrapper -->
+		<div class="collapse navbar-collapse" id="navbarSupportedContent" mdbCollapse #basicNavbar="mdbCollapse">
+			<!-- Left links -->
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+				<ng-container *ngIf="showsPages">
+					<li class="nav-link" routerLink="/properties">
+						<a [ngClass]="{'active' : page == 'properties'}">Properties</a>
+					</li>
+					<li class="nav-link" routerLink="/listings">
+						<a [ngClass]="{'active' : page == 'listings'}">Listings</a>
+					</li>
+					<li class="nav-link" routerLink="/actions">
+						<a [ngClass]="{'active' : page == 'actions'}">Activity</a>
+					</li>
+					<li class="nav-link" routerLink="/tools">
+						<a [ngClass]="{'active' : page == 'tools'}">Tools</a>
+					</li>
+					<li mdbDropdown class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" mdbDropdownToggle
+							aria-expanded="false">
+							Account
+						</a>
+						<ul mdbDropdownMenu class="dropdown-menu me-auto mb-2 mb-lg-0"
+							aria-labelledby="navbarDropdownMenuLink">
+							<li class="nav-link" *ngIf="showsUserName" routerLink="/user-account/user-profile">
+								<a>Profile</a>
+								<!-- <a>{{user?.name}}</a> -->
+							</li>
+							<li class="nav-link" *ngIf="showsWorkspaceLabel" routerLink="/home">
+								<a>Workspaces</a>
+								<!-- <a>{{workspace?.name}}</a> -->
+							</li>
+							<li><hr class="dropdown-divider" /></li>
+							<li class="nav-link" *ngIf="showsUserName" routerLink="/user-account/user-profile">
+								<a (click)="exit()" title="Sign out">sign-out</a>
+							</li>
+						</ul>
+					</li>
+				</ng-container>
+			</ul>
+		</div>
+		<!-- Collapsible wrapper -->
+	</div>
+	<!-- Container wrapper -->
+</nav>
+<!-- Navbar -->
+<!-- 
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+	<div class="container-fluid">
+		<a class="navbar-brand" href="#">
+			<img src="/assets/img/inspectify-wordmark.svg" alt="" class="img-responsive" style="height: 12px;">
+		</a>
+		<button class="navbar-toggler rounded-0 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+			aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="mainNav">
+			<ul class="navbar-nav me-auto mb-2">
+				<ng-container *ngIf="showsPages">
+					<li class="nav-link" routerLink="/properties">
+						<a [ngClass]="{'active' : page == 'properties'}">Properties</a>
+					</li>
+					<li class="nav-link" routerLink="/listings">
+						<a [ngClass]="{'active' : page == 'listings'}">Listings</a>
+					</li>
+					<li class="nav-link" routerLink="/actions">
+						<a [ngClass]="{'active' : page == 'actions'}">Activity</a>
+					</li>
+					<li class="nav-link" routerLink="/tools">
+						<a [ngClass]="{'active' : page == 'tools'}">Tools</a>
+					</li>
+				</ng-container>
+				
+				<hr>
+				<li class="nav-link" *ngIf="showsUserName" routerLink="/user-account/user-profile"><a class="active" >{{user?.name}}</a></li>
+				<li class="nav-link" *ngIf="showsWorkspaceLabel"><a class="active" title="Choose Workspace" routerLink="/home">{{workspace?.name}}</a></li>
+				<li>
+					<a (click)="exit()" title="Sign out">
+						<span class="mdi mdi-logout-variant text-light"> sign-out</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav> -->

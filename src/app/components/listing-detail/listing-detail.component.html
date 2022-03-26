@@ -1,0 +1,181 @@
+
+<div class="modal-header">
+    <h5 class="modal-title" id="litingDetailModal" *ngIf="isLoading"><span class="mdi mdi-spin mdi-loading mdi-12px"></span></h5>
+    <h5 class="modal-title" id="litingDetailModal" *ngIf="listing && !isLoading">{{ listing.space.label }}</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<div class="modal-body">
+    
+
+    <!-- SPINNER -->
+    <div class="container" *ngIf="isLoading">
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="p-1">
+
+                <div class="col text-center">
+                    <span class="mdi mdi-spin mdi-loading mdi-36px"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- CONTENT -->
+    <div class="" *ngIf="listing && !isLoading">
+        <div class="smaller ">
+            <div class="ratio ratio-4x3">
+                <img *ngIf="!listing.image_url" class="img-fluid" src="https://via.placeholder.com/400x200" alt="" style="width: 100%;">
+                <img *ngIf="listing.image_url" class="img-fluid" src="{{listing.image_url}}" >
+            </div>
+
+            <!-- TABS -->
+            <mdb-tabs [fill]="true">
+
+                <!-- PROPERTY TAB -->
+                <mdb-tab title="Property">
+                    <table class="unstriped"> 
+                        <tbody class="no-border">
+                            <tr *ngIf="listing.space?.label">
+                                <td class="lab">Label</td>
+                                <td class="text-break">{{ listing.space.label }}</td>
+                            </tr>
+                            <tr *ngIf="listing.space?.address">
+                                <td class="lab">Address</td>
+                                <td class="text-break">{{ listing.space.address }}</td>
+                            </tr>
+                            <tr *ngIf="listing.space?.coordinates">
+                                <td class="lab">Coordinates</td>
+                                <td class="text-break">{{ listing.space.coordinates }} 
+                                    <br> 
+                                    <a target="_blank" href="http://www.google.com/maps/place/{{ listing.space.coordinates }}">
+                                        Open in Google Maps
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr *ngIf="listing.space?.measurements">
+                                <td class="lab">Measurements</td>
+                                <td class="text-break">{{ listing.space.measurements }}</td>
+                            </tr>
+                            <tr *ngIf="listing.space?.area">
+                                <td class="lab">Area</td>
+                                <td class="text-break">{{ listing.space.area | number }}</td>
+                            </tr>
+                            <tr *ngIf="listing.space?.interest?.holder">
+                                <td class="lab">Owner</td>
+                                <td class="text-break">{{ listing.space.interest.holder }}</td>
+                            </tr>
+                            <tr *ngIf="listing.space?.interest?.title">
+                                <td class="lab">Document</td>
+                                <td class="text-break">{{ listing.space.interest.title }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                </mdb-tab>
+
+                <!-- LISTING TAB -->
+                <mdb-tab title="Listing" *ngIf="listing.space" >
+                    <table class="unstriped">
+                        <tbody class="no-border">
+                            <tr *ngIf="listing.market">
+                                <td class="lab">Market</td>
+                                <td>{{ listing.market | titlecase }}</td>
+                            </tr>
+                            <tr *ngIf="listing.label">
+                                <td class="lab">Label</td>
+                                <td class="text-break">{{ listing.label }}</td>
+                            </tr>
+                            <tr *ngIf="listing.category">
+                                <td class="lab">Category</td>
+                                <td>{{ listing.category | titlecase }}</td>
+                            </tr>
+                            <tr *ngIf="listing.neighbourhood">
+                                <td class="lab">Neighbourhood</td>
+                                <td class="text-break">{{ listing.neighbourhood }}</td>
+                            </tr>
+                            <tr *ngIf="listing.composition">
+                                <td class="lab">Composition</td>
+                                <td class="text-break">{{ listing.composition }}</td>
+                            </tr>
+                            <tr *ngIf="listing.asking_price > 0">
+                                <td class="lab">Asking Price</td>
+                                <td>₦{{ listing.asking_price | number}}.00</td>
+                            </tr>
+                            <tr *ngIf="listing.reserve_price > 0">
+                                <td class="lab">Reserve Price</td>
+                                <td>₦{{ listing.reserve_price | number }}.00</td>
+                            </tr>
+                            <tr *ngIf="listing.authoriser">
+                                <td class="lab">Authoriser</td>
+                                <td class="text-break">{{ listing.authoriser }}</td>
+                            </tr>
+                            <tr *ngIf="listing.agent">
+                                <td class="lab">Agent</td>
+                                <td class="text-break">{{ listing.agent }}</td>
+                            </tr>
+                            <tr *ngIf="listing.introducer">
+                                <td class="lab">Introducer</td>
+                                <td class="text-break">{{ listing.introducer }}</td>
+                            </tr>
+                            <tr *ngIf="listing.amenities">
+                                <td class="lab">Amenities</td>
+                                <td class="text-break">{{ listing.amenities }}</td>
+                            </tr>
+                            <tr *ngIf="listing.appliances">
+                                <td class="lab">Appliances</td>
+                                <td class="text-break">{{ listing.appliances }}</td>
+                            </tr>
+                            <tr *ngIf="listing.services">
+                                <td class="lab">Services</td>
+                                <td class="text-break">{{ listing.services }}</td>
+                            </tr>
+                            <tr *ngIf="listing.brief">
+                                <td class="lab">Brief</td>
+                                <td class="text-break">{{ listing.brief }}</td>
+                            </tr>
+                            <tr *ngIf="listing.public_uri">
+                                <td class="lab">Public URL</td>
+                                <td class="text-break"><a class="text-break" target="_blank" href="{{ publicApiUrl + listing.public_uri }}">{{ publicApiUrl + listing.public_uri | ellipsis:35 }}</a>  </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </mdb-tab>
+                
+                <!-- MEDIA TAB -->
+                <mdb-tab title="Media" *ngIf="listing.multimedia?.length > 0" >
+                    <div class="slider">    
+                        
+                        <!-- CAROUSEL -->
+                        <mdb-carousel  [animation]="'fade'" [indicators]="true">
+                            <mdb-carousel-item *ngFor="let item of listing.multimedia; let i = index">
+                                <img src="{{ item.url }}" class="d-block w-100" alt="..." />
+                                <div class="carousel-caption text-capitalize fw-lighter">
+                                    <p class="fs-5">{{ item.label }}</p>
+                                </div>
+                            </mdb-carousel-item>
+                        </mdb-carousel>
+
+                    </div>
+                </mdb-tab>
+                
+                <!-- ACTIVITY TAB -->
+                <mdb-tab title="Activity" *ngIf="listing.activity?.length > 0" >
+                    <ol class="list-group list-group-numbered">
+                        <li class="list-group-item d-flex justify-content-between align-items-start rounded-0"  *ngFor="let item of listing.activity; let i = index" (click)="onActionClicked(item.id)">
+                            <div class="ms-2 me-auto">
+                                <p class="fw-normal mb-1">{{ item.subject | ellipsis:50 }}</p>
+                                <p class="fw-light mb-0"> {{ item.details | ellipsis:50 }}</p>                               
+                            </div>
+                            <span class="badge bg-light text-dark fw-light">{{ item.date | date: 'MMM d' }}</span>
+                        </li>
+                    </ol>
+                </mdb-tab>
+            </mdb-tabs>
+
+        </div>
+    </div>
+
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-danger border-0 " data-bs-dismiss="modal">Close</button>
+</div>
+

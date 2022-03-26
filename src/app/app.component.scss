@@ -1,0 +1,29 @@
+.modal {
+    background: white;
+    padding: 4rem;
+    width: 600px;
+    height: 90vh;
+    margin: 2rem auto;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+
+.notice {
+    background: #333;
+    color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 1rem;
+    width: 300px;
+    margin: 1rem;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.message {
+    position: absolute;
+    bottom: 0;
+    font-size: small;
+}

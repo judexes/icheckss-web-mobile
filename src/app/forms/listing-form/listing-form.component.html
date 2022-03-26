@@ -1,0 +1,95 @@
+<div class="modal-title">
+    <h4>{{title}}</h4>
+</div>
+
+<form #mForm="ngForm" [formGroup]="listingForm" (ngSubmit)='enter(mForm)' >
+
+    <fieldset [disabled]="isWorking">
+
+
+        <label for="" class="for">Label</label>
+        <input type="text" formControlName="label">
+    
+        <label for="" class="for">Market</label>
+        <select formControlName="market">
+            <option value="sale">Sale</option>
+            <option value="lease">Lease</option>
+            <option value="joint venture">Joint Venture</option>
+        </select>
+    
+        <label for="" class="for">Category</label>
+        <select formControlName="category">
+            <option value="residential">Residential</option>
+            <option value="commercial">Commercial</option>
+            <option value="industrial">Industrial</option>
+        </select>
+    
+        <label for="" class="for">Neighbourhood</label>
+        <input formControlName="neighbourhood" type="text">
+    
+    
+        <label for="" class="for">Composition</label>
+        <textarea formControlName="composition" type="text" rows="2"></textarea>
+    
+    
+        <br><br>
+    
+    
+        
+        <label for="" class="for">Asking price</label>
+        <input type="number" formControlName="asking_price">
+    
+        <label for="" class="for">Reserve price</label>
+        <input type="number" formControlName="reserve_price">
+    
+    
+        <br><br>
+    
+
+        <label for="" class="for">Brief</label>
+        <textarea formControlName="brief" type="text" rows="4"></textarea>
+    
+        <br><br>
+    
+        <label for="" class="for">Amenities</label>
+        <textarea formControlName="amenities" type="text" rows="4"></textarea>
+
+        <label for="" class="for">Appliances</label>
+        <textarea formControlName="appliances" type="text" rows="4"></textarea>
+    
+        <label for="" class="for">Services</label>
+        <textarea formControlName="services" type="text" rows="4"></textarea>
+    
+        <label for="" class="for">Service charge</label>
+        <input type="text" formControlName="service_charge" >
+    
+        <label for="" class="for">Security deposit</label>
+        <input type="number" formControlName="security_deposit" >
+    
+        <label for="" class="for">Terms</label>
+        <textarea formControlName="terms" type="text" rows="4"></textarea>
+    
+        <br><br>
+    
+        <label for="" class="for">Agent</label>
+        <input type="text" formControlName="agent" >
+    
+        <label for="" class="for">Introducer</label>
+        <input type="text" formControlName="introducer" >
+    
+        <label for="" class="for">Authoriser</label>
+        <input type="text" formControlName="authoriser" >
+    
+    
+        <label for="" class="for">Additional Information</label>
+        <textarea formControlName="additional_information" type="text" rows="4"></textarea>
+    
+    
+    
+        <label>&nbsp;</label>
+        <button *ngIf="!isWorking" type="submit" class="button secondary" [disabled]="!mForm.valid">Submit</button>
+        <span *ngIf="isWorking" class="mdi mdi-spin mdi-loading mdi-24px"></span>
+
+    </fieldset>
+
+</form>

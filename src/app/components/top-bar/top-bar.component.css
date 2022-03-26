@@ -1,0 +1,13 @@
+
+hr {
+    color: #fff;
+}
+
+.nav-link {
+    color: #0000008c;
+}
+
+.active {
+    color: #000000;
+    font-weight: 500;
+}

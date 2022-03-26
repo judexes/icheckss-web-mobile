@@ -1,0 +1,47 @@
+<div class="modal-title">
+    <h4>{{title}}</h4>
+</div>
+
+<form #mForm="ngForm" [formGroup]="spaceForm" (ngSubmit)='enter(mForm)'>
+
+    <fieldset [disabled]="isWorking">
+
+
+        <label for="" class="for">Label</label>
+        <input type="text" formControlName="label">
+
+    
+        <label for="" class="for">Address</label>
+        <textarea formControlName="address" type="text" rows="2"></textarea>
+    
+    
+        <label for="" class="for">Coordinates</label>
+        <input type="text" formControlName="coordinates">
+    
+        <br><br>
+        
+        <label for="" class="for">Measurements</label>
+        <input type="text" formControlName="measurements">
+    
+        <label for="" class="for">Area</label>
+        <input type="number" formControlName="area">
+    
+        <label for="" class="for">Height</label>
+        <input type="number" formControlName="height">
+    
+        <label for="" class="for">Levels</label>
+        <input type="number" formControlName="levels">
+
+        <br><br>
+
+        <label for="" class="for">Description</label>
+        <textarea formControlName="description" type="text" rows="4"></textarea>
+       
+    
+        <label>&nbsp;</label>
+        <button *ngIf="!isWorking" type="submit" class="button secondary" [disabled]="!mForm.valid">Submit</button>
+        <span *ngIf="isWorking" class="mdi mdi-spin mdi-loading mdi-24px"></span>
+
+    </fieldset>
+
+</form>

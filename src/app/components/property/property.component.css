@@ -1,0 +1,79 @@
+
+#tree {
+    background-color: #eee;
+    font-size: small;
+}
+
+.tree {
+    padding: 2rem 0.5rem;
+}
+
+.scroll {
+    margin-bottom: 0rem;
+    height: 83vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    }
+
+#detail {
+    background-color: #ffffff;
+}
+
+ul.actions li {
+    padding: 0rem 1rem;
+    font-size: 1rem;
+}
+
+ul.actions li:hover {
+    color: limegreen;
+} 
+
+ul {
+    list-style: none;
+}
+
+li {
+    margin-top: 0.5rem;
+}
+
+a {
+    color: #ffffff;
+}
+
+a.active {
+    color: #ccc;
+}
+
+
+
+.grid-container {
+    min-height: calc(100vh - 55px);
+}
+
+#list, #detail {
+    height: calc(100vh - 55px);
+}
+
+#list {
+    overflow-y: auto;
+}
+
+#detail {
+    overflow-y: scroll;
+}
+
+span.is-loading {
+    color: limegreen;
+}
+
+.no-link {
+    cursor: default;
+}
+
+ul.actions li.no-link:hover {
+    color: #4e4e4e;
+} 
+
+table {
+    margin-bottom: 0rem;
+}

@@ -1,0 +1,25 @@
+.screen {
+    background-image: url('../../../assets/img/background-photo-jerry-okoroafor.jpg');
+}
+
+label {
+    margin-bottom: 0.2rem;
+}
+
+.form-control {
+  background-color: #fff0;
+  border: 0px solid #ced4da;
+  border-bottom: 1px solid #ced4da;
+}
+
+.form-control:focus {
+  background-color: #ffffff2b;
+  border: 0px solid #ced4da;
+  border-bottom: 1px solid #ced4da;
+  box-shadow: none;
+}
+
+.btn-primary:disabled, .btn-primary.disabled {
+  color: #fff;
+  background-color: #868b95;
+}

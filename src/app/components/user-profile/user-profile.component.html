@@ -1,0 +1,27 @@
+<div class="grid-container full">
+
+    <div class="grid-x">
+        <div class="large-6 padding-3">
+
+            <table class="unstriped">
+                <tbody class="no-border">
+                    <tr class="head">
+                        <td colspan="2"><h3>{{ user?.name }}</h3></td>
+                    </tr>
+                    <tr>
+                        <td>Email:</td>
+                        <td>{{ user?.email }}</td>
+                    </tr>
+                    <tr>
+                        <td>Password:</td>
+                        <td>************</td>
+                    </tr>           
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td><small><a (click)="onChangePasswordClicked()"><i>Change password?</i></a></small></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

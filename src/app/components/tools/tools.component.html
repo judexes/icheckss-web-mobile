@@ -1,0 +1,26 @@
+<app-top-bar  [showsUserName]=true [showsPages]=true [page]="'tools'"></app-top-bar>
+
+<div class="grid-container full">
+
+    <div class="grid-x">
+
+        <div id="list" class="medium-2">  
+            <ul class="align-left items"> 
+                <li class="menu-text" class="link" routerLink="/tools/sales-bulletin">
+                    <a [ngClass]="{'is-active' : toolName === 'sales-bulletin'}">Sales bulletin</a>
+                </li>
+                <li class="menu-text" class="link" routerLink="/tools/lease-bulletin">
+                    <a [ngClass]="{'is-active' : toolName === 'lease-bulletin'}">Lease bulletin</a>
+                </li>
+            </ul>
+        </div>
+
+
+        <div id="detail" class="medium-10">
+            <router-outlet></router-outlet>
+        </div>
+
+    </div>
+
+</div>
+

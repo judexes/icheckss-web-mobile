@@ -1,0 +1,30 @@
+<router-outlet></router-outlet>
+
+<div class="scrim animate__animated animate__fadeIn" (click)="onContainerClicked($event)" [ngStyle]="{'display': liveModal.name != null ? 'block' : 'none'}">
+  <div class="modal  animate__animated animate__fadeInDown">
+      <div [ngSwitch]="liveModal.name">
+          <app-action-form *ngSwitchCase="'action'" [entityType]="liveModal.prefill.entityType" [entityId]="liveModal.prefill.entityId"></app-action-form>
+          <app-multimedia-form *ngSwitchCase="'multimedia'" [entityType]="liveModal.prefill.entityType" [entityId]="liveModal.prefill.entityId"></app-multimedia-form>
+          <app-listing-form *ngSwitchCase="'listing'" [mode]="liveModal.prefill.mode" [id]="liveModal.prefill.id" [spaceId]="liveModal.prefill.space_id"></app-listing-form>
+          <app-space-form *ngSwitchCase="'space'" [mode]="liveModal.prefill.mode" [id]="liveModal.prefill.id"></app-space-form>
+          
+          <app-listing-wizard *ngSwitchCase="'listing-wizard'" [mode]="liveModal.prefill.mode"></app-listing-wizard>
+
+          
+          <app-password-change-form *ngSwitchCase="'password-change'" [mode]="liveModal.prefill.mode" [chart]="liveModal.prefill.chart"></app-password-change-form>
+
+          <app-action-view *ngSwitchCase="'action-view'" [id]="liveModal.prefill.id"></app-action-view>
+      </div>
+  </div>
+</div>
+
+<div class="wrapper animate__animated animate__fadeIn" (click)="onNoticeActive($event)" [ngStyle]="{'display': liveNotice.message != null ? 'block' : 'none'} ">
+  <div class="notice animate__animated animate__fadeInUp">
+      <div>
+          <div class="text-right link mdi mdi-close" (click)="CloseNotice()"> </div>
+          <br/><br/> <!-- temp -->
+          {{ liveNotice.message }}
+
+      </div>
+  </div>
+</div>

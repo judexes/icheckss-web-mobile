@@ -1,0 +1,21 @@
+span {
+    color: #777;
+    font-size: x-small;
+    margin: 0.5rem;
+}
+
+span.active {
+    color : white;
+}
+
+.frame {
+    height: 20rem;
+    margin-bottom: 1rem;
+}
+
+img {
+    width: 20rem;
+    object-fit: cover;
+}
+
+

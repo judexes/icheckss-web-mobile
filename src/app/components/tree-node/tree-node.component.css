@@ -1,0 +1,13 @@
+li {
+    list-style: none;
+    line-height: 2rem;
+}
+
+
+.node {
+    margin-left: 0.2rem;
+}
+
+.is-active {
+    font-weight: bold;
+}

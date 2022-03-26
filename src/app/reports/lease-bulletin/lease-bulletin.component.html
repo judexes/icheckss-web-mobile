@@ -1,0 +1,41 @@
+<div class="grid-x card-container wrapper">
+    <div class="large-12 medium-12">
+            <div id="content-container" class="">
+
+                <div *ngIf="isLoading">
+                    <div class="center-children" style="margin-top: 40vh;">
+                        <span class="mdi mdi-spin mdi-loading mdi-36px"></span>
+                    </div>
+                </div>
+                <div *ngIf="!isLoading" class="smaller">
+
+                    <div class="table-caption">
+                        Lease Bulletin as at: {{ today | date:'d MMM yyyy' }}
+                    </div>
+                    <input [disabled]="rows?.length==0" id="filter-input" name="filter-term" type="search" placeholder="Filter" [(ngModel)]="filterTerm">
+
+                    <table id="list-table">
+                        <thead>
+                            <tr>
+                                <th>S/N</th>
+                                <th>Description</th>
+                                <th>Neighbourhood</th>
+                                <th class="text-right">Asking</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <ng-container *ngFor="let row of rows | filter:filterTerm; let i = index" >
+                                <tr>
+                                    <td>{{i+1}}</td>
+                                    <td title="{{row.label}}" nowrap>{{row.label}}</td>
+                                    <td title="{{row.neighbourhood}}" nowrap>{{row.neighbourhood}}</td>
+                                    <td title="{{row.asking_price}}" nowrap class="text-right">{{row.asking_price | number}}</td>
+                                </tr>
+                            </ng-container>
+                        </tbody>
+                    </table>
+                </div>            
+            </div>
+    </div>
+</div>

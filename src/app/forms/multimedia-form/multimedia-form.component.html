@@ -1,0 +1,35 @@
+<table class="unstriped">
+    <tbody>
+        <tr>
+            <td colspan="2" class="text-right">
+                <form>
+
+                    <label for="media" class="button secondary expanded">Choose File</label>
+                    <input id="media" type="file" [disabled]="isWorking" (change)="onFileSelected($event)" class="show-for-sr">
+                
+                    <input type="text" name="label" placeholder="Label" />
+                </form>
+            </td>
+        </tr>
+        <tr *ngIf="isWorking">
+            <td colspan="2" class="text-center">
+                <i class="mdi mdi-36px mdi-spin mdi-loading"></i>
+            </td>
+        </tr>
+        <tr *ngFor="let item of items; index as i">
+            <td>
+                <div class="media-item">
+                    <img class="thumbnail" src="{{ items[i].url }}" alt="">
+                    <span *ngIf="!deleting" (click)="deleteItem(items[i])" class="mdi mdi-trash-can-outline mdi-24px mdi-light cursor-pointer only-show-on-hover"></span>
+                </div>
+            </td>
+            <td>
+                <div>{{ items[i].label }}</div>
+                <div class="sub">{{ items[i].type }}</div>
+                <div class="sub">{{ items[i].created }}</div>
+            </td>
+        </tr>
+
+
+    </tbody>
+</table>

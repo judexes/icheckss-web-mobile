@@ -1,0 +1,53 @@
+<div *ngIf="isWorking" class="center-children">
+    <span class="mdi mdi-spin mdi-loading mdi-36px"></span>
+</div>
+
+<div *ngIf="!isWorking && action" class="smaller">
+
+
+    <table class="unstriped ">
+        <tbody class="no-border">
+            
+            <tr class="head">
+                <td colspan="2">
+                    <h2>Memo</h2>
+                </td>
+            </tr>
+            
+            <tr *ngIf="action.user">
+                <td class="lab">From</td>
+                <td title="{{splitUserName(action.user)[1]}}">{{ splitUserName(action.user)[0] }} </td>
+            </tr>
+
+            <tr *ngIf="action.created">
+                <td class="lab">Date</td>
+                <td>{{ action.date  | date:'d MMM yyyy' }}</td>
+            </tr>
+
+            <tr *ngIf="action.subject">
+                <td class="lab">Subject</td>
+                <td>{{ action.subject }}</td>
+            </tr>
+            
+            <tr *ngIf="action.details">
+                <td class="lab  ">Details</td>
+                <td>{{ action.details }}</td>
+            </tr>
+
+            <tr *ngIf="action.remark">
+                <td class="lab">Remark</td>
+                <td>{{ action.remark }}</td>
+            </tr>
+
+            <tr *ngIf="action.verified">
+                <td class="lab">Verified</td>
+                <td>{{ action.verified }}</td>
+            </tr>
+            <tr *ngIf="action.verifier">
+                <td class="lab">Verifier</td>
+                <td>{{ action.verifier }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

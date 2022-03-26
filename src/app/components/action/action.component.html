@@ -1,0 +1,74 @@
+<app-top-bar [showsWorkspaceLabel]=true [showsPages]=true [showsUserName]=true [page]="'actions'"></app-top-bar>
+
+<div class="grid-container full">
+
+    <div class="grid-x">
+
+        <div id="list" class="medium-8">
+            <table id="header-table" class="unstriped">
+                <tbody>
+                    <tr *ngIf="actions?.length > 0">
+                        <td colspan="100%">
+                            <ul class="menu  align-right actions">
+                                <li (click)="onReloadClicked()" title="Reload"><span ng class="mdi mdi-reload link"
+                                        [ngClass]="{'is-loading' : isLoading, 'mdi-spin' : isLoading}"></span></li>
+                                <li (click)="onExportPDFClicked()" title="Export PDF"><span
+                                        class="mdi mdi-file-pdf-box link"></span></li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div *ngIf="isLoading">
+                <div class="center-children" style="margin-top: 40vh;">
+                    <span class="mdi mdi-spin mdi-loading mdi-36px"></span>
+                </div>
+            </div>
+
+
+            <!-- <table class="table" *ngIf="!isLoading">
+                <tbody>
+                    <ng-container *ngFor="let action of actions; let i = index">
+                        <tr [ngClass]="{'is-active' : action.id === activeActionId}" class="link"
+                            (click)="onRecordClicked(action.id)">
+                            <th scope="row">{{i+1}}</th>
+                            <td>{{action.subject}}</td>
+                            <td title="{{action.details}}">
+                                <div *ngIf="action.details">{{ action.details | slice:0:80 }}{{ action.details.length >
+                                    80 ? '...' : '' }}</div>
+                            </td>
+                            <td title="{{splitUserName(action.user)[1]}}">{{splitUserName(action.user)[0]}}</td>
+                            <td class="text-right">{{action.date | date:'d MMM yyyy' }}</td>
+                        </tr>
+                    </ng-container>
+                </tbody>
+            </table> -->
+
+
+            <div *ngFor="let action of actions; let i = index" class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#'collapse' + i" aria-expanded="false" aria-controls="'collapse' + i">
+                            <p>{{ action.subject }} #{{i+1}} - </p>
+                            <p><small> <br> {{ action.date }}</small></p>
+                        </button>
+                    </h2>
+                    <div id="'collapse' + i" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+                        <p [ngClass]="{'is-active' : action.id === activeActionId}" class="link" (click)="onRecordClicked(action.id)"><a href="">More...</a></p>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+
+    </div>
+
+</div>

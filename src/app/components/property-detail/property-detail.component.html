@@ -1,0 +1,102 @@
+<div class="grid-x card-container wrapper" *ngIf="isLoading">
+    <div class="large-12 medium-12 center-children">
+        <span class="mdi mdi-spin mdi-loading mdi-36px"></span>
+    </div>
+</div>
+
+<div class="" *ngIf="space && !isLoading">
+
+    <div>
+        <div>
+            <img *ngIf="!space.image_url" class="cover-img" src="https://via.placeholder.com/400x200" alt="">
+            <img *ngIf="space.image_url" class="cover-img" src="{{space.image_url}}">
+        </div>
+        
+
+        <div id="tab-container">
+            <ul class="menu">
+                <li class="tab" [ngClass]="{'is-active' : tabIndex == 0}"><a (click)="setTab(0)">Property</a></li>
+                <li *ngIf="multimedia?.length > 0" class="tab" [ngClass]="{'is-active' : tabIndex == 1}"><a
+                        (click)="setTab(2)">Media</a></li>
+                <li *ngIf="activity?.length > 0" class="tab" [ngClass]="{'is-active' : tabIndex == 2}"><a
+                        (click)="setTab(3)">Activity</a></li>
+            </ul>
+        </div>
+
+
+        <div id="content-container" class="smaller">
+            <div *ngIf="tabIndex==0">
+                <table class="unstriped">
+                    <tbody class="no-border">
+                        <tr *ngIf="space.label">
+                            <td class="lab">Label</td>
+                            <td>{{ space.label }}</td>
+                        </tr>
+                        <tr *ngIf="space.address">
+                            <td class="lab">Address</td>
+                            <td>{{ space.address }}</td>
+                        </tr>
+                        <tr *ngIf="space.coordinates">
+                            <td class="lab">Coordinates</td>
+                            <td>{{ space.coordinates | ellipsis:20}} <br> <a target="_blank"
+                                    href="http://www.google.com/maps/place/{{ space.coordinates }}">Open in
+                                    Google Maps</a></td>
+                        </tr>
+                        <tr *ngIf="space.measurements">
+                            <td class="lab">Measurements</td>
+                            <td>{{ space.measurements }}</td>
+                        </tr>
+                        <tr *ngIf="space.area">
+                            <td class="lab">Area</td>
+                            <td>{{ space.area | number }}</td>
+                        </tr>
+                        <tr *ngIf="space.description">
+                            <td class="lab">Description</td>
+                            <td>{{ space.description }}</td>
+                        </tr>
+                        <tr *ngIf="space.interest?.holder">
+                            <td class="lab">Owner</td>
+                            <td>{{ space.interest.holder }}</td>
+                        </tr>
+                        <tr *ngIf="space.interest?.title">
+                            <td class="lab">Document</td>
+                            <td>{{ space.interest.title }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div *ngIf="tabIndex==1">
+                <div class="multimedia-list-container">
+
+                    <div class="multimedia-item" *ngFor="let item of multimedia; let i = index">
+                        <ul class="menu">
+                            <li><img class="thumbnail" src="{{ item.url }}" alt=""></li>
+                            <li>
+                                <ul class="no-bullet">
+                                    <li><strong>{{ item.label }}</strong></li>
+                                    <li>{{ item.type }}</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="tabIndex==2">
+                <table class="unstriped activity-table">
+                    <tbody class="no-border">
+                        <tr *ngFor="let item of activity; let i = index">
+                            <td nowrap>{{ item.created | date: 'dd/MM/yyyy' }}</td>
+                            <td nowrap>{{ (item.subject?.length > 20)? (item.subject | slice:0:20)+'..':(item.subject)
+                                }}</td>
+                            <td nowrap>{{ (item.details?.length > 20)? (item.details | slice:0:20)+'..':(item.details)
+                                }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

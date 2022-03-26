@@ -1,0 +1,11 @@
+tbody td {
+  vertical-align: top;
+}
+
+#content-container {
+  padding: 2rem;
+}
+
+tr.head {
+  border-bottom: none;
+}

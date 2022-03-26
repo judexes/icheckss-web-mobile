@@ -1,0 +1,32 @@
+<div class="modal-title">
+    <h4>{{title}}</h4>
+</div>
+
+<form #mForm="ngForm" (ngSubmit)='enter(mForm)'>
+
+    <label for="date">Date</label>
+    <input type="date" name="date" [(ngModel)]="date" required max="{{today}}">
+
+    <label for="subject">Subject</label>
+    <select id="subject" name="subject" ngModel required  [disabled]="working">
+        <option value="Authorisation">Authorisation</option>
+        <option value="Advertisement">Advertisement</option>
+        <option value="Inquiry">Inquiry</option>
+        <option value="Inspection">Inspection</option>
+        <option value="Offer">Offer</option>
+        <option value="Acceptance">Acceptance</option>
+        <option value="Payment">Payment</option>
+        <option value="Execution">Execution</option>
+        <option value="Information">Information</option>
+    </select>
+
+    <label for="details">Details</label>
+    <textarea id="details" name="details" type="text" rows="6" name="details" required ngModel [disabled]="working">
+    </textarea>
+
+
+    <label>&nbsp;</label>
+    <button *ngIf="!working" type="submit" class="button secondary" [disabled]="!mForm.valid">Create</button>
+    <span *ngIf="working" class="mdi mdi-spin mdi-loading mdi-24px"></span>
+
+</form>

@@ -1,0 +1,21 @@
+<li>
+    <ng-container *ngIf="!isOpen"> 
+        <span *ngIf="space.space_count > 0" class="mdi mdi-chevron-down link" (click)="load(space.id)"></span> <!-- if has children -->
+        <span *ngIf="space.space_count == 0" class="mdi mdi-circle-small"></span> <!-- if doesn't have children -->
+    </ng-container>
+
+    <ng-container *ngIf="isOpen"> 
+        <span class="mdi mdi-chevron-right link" (click)="toggle()"></span>
+    </ng-container>
+    
+
+    &nbsp;
+    <!--<span class="mdi mdi-floor-plan"></span>-->
+    <span class="node link" (click)="open(space.id)" [ngClass]="{'is-active' : space.id === activeSpaceId}"> {{ getLabel() }} </span>
+
+    <ng-container *ngIf="space.spaces">
+        <ul *ngIf="isOpen && space.spaces.length > 0">
+            <app-tree-node *ngFor="let sp of space.spaces; let x = index" [space]="space.spaces[x]" [activeSpaceId]="activeSpaceId"></app-tree-node>
+        </ul>
+    </ng-container>
+</li>

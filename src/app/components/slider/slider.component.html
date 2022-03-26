@@ -1,0 +1,16 @@
+<div *ngIf="media != null && media.length > 0">
+
+    <div class="frame">
+        <img src="{{ media[activeIndex].resource }}">
+    </div>
+    
+    <div>
+        <ul class="menu align-center">
+            <li *ngFor="let item of media;  index as i">
+                <span class="mdi mdi-circle cursor-pointer" (click)="loadItem(i)" [ngClass]="{'active': i === activeIndex }"></span>
+            </li>
+        </ul>
+    </div>
+    
+</div>
+

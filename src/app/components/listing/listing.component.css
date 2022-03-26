@@ -1,0 +1,69 @@
+
+.card {
+    background-color: #fff;
+    font-size: small;
+}
+
+#detail {
+    background-color: #ffffff;
+}
+
+a {
+    color: #ffffff;
+}
+
+a.active {
+    color: #ccc;
+}
+
+.card p {
+    margin-bottom: 0rem;
+}
+
+.card-body {    
+    padding: .0rem .4rem;
+}
+
+.card {
+    color: #555555;
+}
+
+.card-body .card-title {
+    height: 2.7rem;
+}
+
+.card-body .card-text {
+    /* height: 1.2rem; */
+}
+
+.img-item {
+    overflow: hidden;
+    position: relative;
+    background-color: rgb(154, 154, 154);
+    width: 100%;
+    height: 7rem;
+}
+
+.img-thumb {    
+    display: block;
+    max-width: 100%;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.list-group-horizontal > .list-group-item:last-child {
+    border-top-right-radius: 0rem;
+}
+
+.list-group-item:last-child {
+    border-bottom-right-radius: 0rem;
+}
+
+.list-group-horizontal > .list-group-item:first-child {
+    border-bottom-left-radius: 0rem;
+}
+
+.list-group-item:first-child {
+    border-top-left-radius: 0rem;
+}

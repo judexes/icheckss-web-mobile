@@ -1,0 +1,24 @@
+<app-top-bar [showsWorkspaceLabel]=true [showsPages]=true [showsUserName]=true [page]="'user-account'"></app-top-bar>
+
+<div class="grid-container full">
+
+    <div class="grid-x">
+
+        <div id="list" class="medium-3  ">
+            <ul class="align-left items"> 
+                <li class="menu-text" class="link" routerLink="/user-account/user-profile">
+                    <!-- <span class="mdi mdi-circle-small"></span> -->
+                    <span class="mdi mdi-chevron-right"></span>
+                    <a [ngClass]="{'is-active' : 'user-detail'}">User Details</a>
+                </li>
+            </ul>
+        </div>
+
+        <div id="detail" class="medium-9">
+            <!-- <app-action-detail *ngIf="activeActionId"></app-action-detail> -->
+            <router-outlet></router-outlet>
+        </div>
+
+    </div>
+
+</div>
